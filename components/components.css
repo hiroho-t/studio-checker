@@ -75,21 +75,21 @@
     font-size: 18px;
     padding: 24px;
   }
-  
+
   .header .subtitle {
     margin: 0 24px;
   }
-  
+
   .progress-info {
     margin: 0 24px;
   }
-  
+
   .footer {
     flex-direction: column;
     gap: 15px;
     padding: 24px;
   }
-  
+
   .footer-links {
     gap: 15px;
   }

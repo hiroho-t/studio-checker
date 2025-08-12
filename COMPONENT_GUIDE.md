@@ -67,7 +67,7 @@ cp template.html new-page.html
 
 ## ファビコン設定
 
-プロジェクトでは、StartWithのファビコンが全ページで統一されています。
+プロジェクトでは、StartWith のファビコンが全ページで統一されています。
 
 ```html
 <link rel="icon" type="image/png" href="img/StartWith_favicon.png" />
@@ -113,7 +113,7 @@ cp template.html new-page.html
 
 4. **JavaScript の読み込み順序**: `component-loader.js`を`script.js`より前に読み込んでください。
 
-5. **ファビコン**: 各ページのheadタグ内にファビコンのlinkタグが含まれていることを確認してください。
+5. **ファビコン**: 各ページの head タグ内にファビコンの link タグが含まれていることを確認してください。
 
 ## トラブルシューティング
 
@@ -131,4 +131,4 @@ cp template.html new-page.html
 ### ファビコンが表示されない
 
 - `img/StartWith_favicon.png`ファイルが存在するか確認
-- headタグ内のlinkタグが正しく設定されているか確認
+- head タグ内の link タグが正しく設定されているか確認
