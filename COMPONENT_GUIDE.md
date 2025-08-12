@@ -29,6 +29,9 @@ cp template.html new-page.html
 <!-- タイトルを変更 -->
 <title>新しいページタイトル - Studio 公開チェッカー</title>
 
+<!-- ファビコンは自動的に設定されます -->
+<link rel="icon" type="image/png" href="img/StartWith_favicon.png" />
+
 <!-- ヘッダーオプションを設定 -->
 <script>
   document.addEventListener("DOMContentLoaded", async function () {
@@ -62,6 +65,18 @@ cp template.html new-page.html
 | `showProgress` | boolean | 進捗表示の有無 | false                                                             |
 | `progressText` | string  | 進捗テキスト   | "残り 11 チェック"                                                |
 
+## ファビコン設定
+
+プロジェクトでは、StartWithのファビコンが全ページで統一されています。
+
+```html
+<link rel="icon" type="image/png" href="img/StartWith_favicon.png" />
+```
+
+- **ファイル**: `img/StartWith_favicon.png`
+- **形式**: PNG
+- **自動設定**: テンプレートを使用すると自動的に設定されます
+
 ## 使用例
 
 ### 基本的なページ
@@ -69,8 +84,8 @@ cp template.html new-page.html
 ```html
 <script>
   await window.componentLoader.initPage({
-    title: '使い方ガイド',
-    subtitle: 'Studio 公開チェッカーの使い方を説明します。'
+    title: "使い方ガイド",
+    subtitle: "Studio 公開チェッカーの使い方を説明します。"
   });
 </script>
 ```
@@ -80,10 +95,10 @@ cp template.html new-page.html
 ```html
 <script>
   await window.componentLoader.initPage({
-    title: 'チェックリスト',
-    subtitle: '項目を順番にチェックしていきましょう。',
+    title: "チェックリスト",
+    subtitle: "項目を順番にチェックしていきましょう。",
     showProgress: true,
-    progressText: '残り 5 チェック'
+    progressText: "残り 5 チェック"
   });
 </script>
 ```
@@ -98,6 +113,8 @@ cp template.html new-page.html
 
 4. **JavaScript の読み込み順序**: `component-loader.js`を`script.js`より前に読み込んでください。
 
+5. **ファビコン**: 各ページのheadタグ内にファビコンのlinkタグが含まれていることを確認してください。
+
 ## トラブルシューティング
 
 ### コンポーネントが読み込まれない
@@ -110,3 +127,8 @@ cp template.html new-page.html
 
 - `components/components.css`が読み込まれているか確認
 - CSS ファイルのパスが正しいか確認
+
+### ファビコンが表示されない
+
+- `img/StartWith_favicon.png`ファイルが存在するか確認
+- headタグ内のlinkタグが正しく設定されているか確認
