@@ -102,6 +102,7 @@ const startScreen = document.getElementById("startScreen");
 const checklistScreen = document.getElementById("checklistScreen");
 const completionScreen = document.getElementById("completionScreen");
 const planOptions = document.querySelectorAll(".plan-option");
+console.log("Found plan options:", planOptions.length); // デバッグ用
 const startButton = document.getElementById("startButton");
 const progressInfo = document.getElementById("progressInfo");
 const sectionTitle = document.getElementById("sectionTitle");
@@ -117,18 +118,28 @@ const downloadPdf = document.getElementById("downloadPdf");
 // プラン選択
 planOptions.forEach((option) => {
   option.addEventListener("click", function () {
+    console.log("Plan option clicked:", this.dataset.plan); // デバッグ用
+    
     // 他の選択を解除
     planOptions.forEach((opt) => {
-      opt.querySelector(".custom-checkbox").classList.remove("checked");
+      const checkbox = opt.querySelector(".custom-checkbox");
+      if (checkbox) {
+        checkbox.classList.remove("checked");
+      }
     });
 
     // 選択されたプランをマーク
-    this.querySelector(".custom-checkbox").classList.add("checked");
+    const selectedCheckbox = this.querySelector(".custom-checkbox");
+    if (selectedCheckbox) {
+      selectedCheckbox.classList.add("checked");
+    }
     currentPlan = this.dataset.plan;
 
     // スタートボタンを有効化
-    startButton.classList.add("active");
-    startButton.disabled = false;
+    if (startButton) {
+      startButton.classList.add("active");
+      startButton.disabled = false;
+    }
   });
 });
 
