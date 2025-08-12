@@ -1,6 +1,6 @@
 # コンポーネントシステム使用ガイド
 
-このプロジェクトでは、HTML、CSS、JSのみを使用して共通コンポーネント（ヘッダー・フッター）を管理しています。
+このプロジェクトでは、HTML、CSS、JS のみを使用して共通コンポーネント（ヘッダー・フッター）を管理しています。
 
 ## ファイル構成
 
@@ -31,11 +31,11 @@ cp template.html new-page.html
 
 <!-- ヘッダーオプションを設定 -->
 <script>
-  document.addEventListener('DOMContentLoaded', async function() {
+  document.addEventListener("DOMContentLoaded", async function () {
     await window.componentLoader.initPage({
-      title: '新しいページタイトル',
-      subtitle: 'ページの説明文',
-      showProgress: false // 必要に応じてtrueに変更
+      title: "新しいページタイトル",
+      subtitle: "ページの説明文",
+      showProgress: false, // 必要に応じてtrueに変更
     });
   });
 </script>
@@ -55,12 +55,12 @@ cp template.html new-page.html
 
 ## ヘッダーオプション
 
-| オプション | 型 | 説明 | デフォルト値 |
-|-----------|----|----|-------------|
-| `title` | string | ページタイトル | "Studio 公開チェッカー" |
-| `subtitle` | string | ページの説明文 | "Studio で作成したサイトを公開する前に、チェックを行いましょう。" |
-| `showProgress` | boolean | 進捗表示の有無 | false |
-| `progressText` | string | 進捗テキスト | "残り 11 チェック" |
+| オプション     | 型      | 説明           | デフォルト値                                                      |
+| -------------- | ------- | -------------- | ----------------------------------------------------------------- |
+| `title`        | string  | ページタイトル | "Studio 公開チェッカー"                                           |
+| `subtitle`     | string  | ページの説明文 | "Studio で作成したサイトを公開する前に、チェックを行いましょう。" |
+| `showProgress` | boolean | 進捗表示の有無 | false                                                             |
+| `progressText` | string  | 進捗テキスト   | "残り 11 チェック"                                                |
 
 ## 使用例
 
@@ -90,13 +90,13 @@ cp template.html new-page.html
 
 ## 注意事項
 
-1. **ローカルサーバーが必要**: コンポーネントの読み込みには`fetch`を使用するため、ローカルサーバー（Live Server等）で実行してください。
+1. **ローカルサーバーが必要**: コンポーネントの読み込みには`fetch`を使用するため、ローカルサーバー（Live Server 等）で実行してください。
 
 2. **ファイルパス**: コンポーネントファイルは`components/`フォルダ内に配置してください。
 
-3. **CSSの読み込み**: 必ず`components/components.css`を読み込んでください。
+3. **CSS の読み込み**: 必ず`components/components.css`を読み込んでください。
 
-4. **JavaScriptの読み込み順序**: `component-loader.js`を`script.js`より前に読み込んでください。
+4. **JavaScript の読み込み順序**: `component-loader.js`を`script.js`より前に読み込んでください。
 
 ## トラブルシューティング
 
@@ -109,4 +109,4 @@ cp template.html new-page.html
 ### スタイルが適用されない
 
 - `components/components.css`が読み込まれているか確認
-- CSSファイルのパスが正しいか確認
+- CSS ファイルのパスが正しいか確認

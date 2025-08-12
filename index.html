@@ -80,12 +80,13 @@
 
     <script>
       // ページ読み込み時にコンポーネントを初期化
-      document.addEventListener('DOMContentLoaded', async function() {
+      document.addEventListener("DOMContentLoaded", async function () {
         // ヘッダーとフッターを読み込む
         await window.componentLoader.initPage({
-          title: 'Studio 公開チェッカー',
-          subtitle: 'Studio で作成したサイトを公開する前に、チェックを行いましょう。',
-          showProgress: false
+          title: "Studio 公開チェッカー",
+          subtitle:
+            "Studio で作成したサイトを公開する前に、チェックを行いましょう。",
+          showProgress: false,
         });
       });
     </script>

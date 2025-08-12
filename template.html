@@ -36,16 +36,16 @@
 
     <script>
       // ページ読み込み時にコンポーネントを初期化
-      document.addEventListener('DOMContentLoaded', async function() {
+      document.addEventListener("DOMContentLoaded", async function () {
         // ヘッダーとフッターを読み込む
         await window.componentLoader.initPage({
-          title: 'ページタイトル',
-          subtitle: 'ページの説明文',
-          showProgress: false // 必要に応じてtrueに変更
+          title: "ページタイトル",
+          subtitle: "ページの説明文",
+          showProgress: false, // 必要に応じてtrueに変更
         });
-        
+
         // ページ固有の初期化処理をここに追加
-        console.log('ページが読み込まれました');
+        console.log("ページが読み込まれました");
       });
     </script>
   </body>

@@ -20,29 +20,38 @@ class ComponentLoader {
       if (!response.ok) {
         throw new Error(`Failed to load component: ${componentName}`);
       }
-      
+
       let html = await response.text();
-      
+
       // オプションに基づいてHTMLをカスタマイズ
       if (options.title) {
-        html = html.replace('id="pageTitle">Studio 公開チェッカー', `id="pageTitle">${options.title}`);
+        html = html.replace(
+          'id="pageTitle">Studio 公開チェッカー',
+          `id="pageTitle">${options.title}`
+        );
       }
-      
+
       if (options.subtitle) {
-        html = html.replace('id="pageSubtitle">Studio で作成したサイトを公開する前に、チェックを行いましょう。', `id="pageSubtitle">${options.subtitle}`);
+        html = html.replace(
+          'id="pageSubtitle">Studio で作成したサイトを公開する前に、チェックを行いましょう。',
+          `id="pageSubtitle">${options.subtitle}`
+        );
       }
-      
+
       if (options.showProgress !== undefined) {
         const progressElement = html.match(/id="progressInfo"[^>]*>/);
         if (progressElement) {
-          html = html.replace('style="display: none;"', options.showProgress ? '' : 'style="display: none;"');
+          html = html.replace(
+            'style="display: none;"',
+            options.showProgress ? "" : 'style="display: none;"'
+          );
         }
       }
-      
+
       if (options.progressText) {
-        html = html.replace('残り 11 チェック', options.progressText);
+        html = html.replace("残り 11 チェック", options.progressText);
       }
-      
+
       // ターゲット要素に挿入
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
@@ -52,7 +61,7 @@ class ComponentLoader {
         console.error(`Target element not found: ${targetId}`);
       }
     } catch (error) {
-      console.error('Error loading component:', error);
+      console.error("Error loading component:", error);
     }
   }
 
@@ -61,14 +70,14 @@ class ComponentLoader {
    * @param {Object} options - ヘッダーのオプション
    */
   async loadHeader(options = {}) {
-    await this.loadComponent('header', 'header-container', options);
+    await this.loadComponent("header", "header-container", options);
   }
 
   /**
    * フッターを読み込む
    */
   async loadFooter() {
-    await this.loadComponent('footer', 'footer-container');
+    await this.loadComponent("footer", "footer-container");
   }
 
   /**
