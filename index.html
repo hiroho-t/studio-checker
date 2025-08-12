@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="components/components.css" />
+    <script src="components/component-loader.js"></script>
     <script src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,18 +15,14 @@
     />
     <link rel="icon" type="image/png" href="img/StartWith_favicon.png" />
 
-    <title>Studio公開チェッカー</title>
+    <title>Studio 公開チェッカー</title>
   </head>
   <body>
     <div class="container">
-      <div id="startScreen" class="start-screen">
-        <div class="header">
-          <h1>Studio公開チェッカー</h1>
-          <p class="subtitle">
-            Studioで作成したサイトを公開する前に、チェックを行いましょう。
-          </p>
-        </div>
+      <!-- ヘッダーコンテナ -->
+      <div id="header-container"></div>
 
+      <div id="startScreen" class="start-screen">
         <div class="plan-selection-box">
           <h2 class="plan-question">
             プロジェクトの料金プランは、どちらですか？
@@ -66,11 +64,6 @@
 
       <!-- チェックリスト画面 -->
       <div id="checklistScreen" class="checklist-screen">
-        <div class="header">
-          <h1>Studio公開チェッカー</h1>
-          <div class="progress-info" id="progressInfo">残り 11 チェック</div>
-        </div>
-
         <div class="checklist-section">
           <h2 class="section-title" id="sectionTitle">
             文章のチェックをしましょう。
@@ -82,13 +75,20 @@
         </div>
       </div>
 
-      <div class="footer">
-        <div class="footer-links">
-          <a href="#">使い方</a>
-          <a href="#">運営会社</a>
-        </div>
-        <p class="copyright">© StartWith Inc.</p>
-      </div>
+      <!-- フッターコンテナ -->
+      <div id="footer-container"></div>
     </div>
+
+    <script>
+      // ページ読み込み時にコンポーネントを初期化
+      document.addEventListener('DOMContentLoaded', async function() {
+        // ヘッダーとフッターを読み込む
+        await window.componentLoader.initPage({
+          title: 'Studio 公開チェッカー',
+          subtitle: 'Studio で作成したサイトを公開する前に、チェックを行いましょう。',
+          showProgress: false
+        });
+      });
+    </script>
   </body>
 </html>
