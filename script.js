@@ -9,16 +9,11 @@ let currentPlan = null;
 const planOptions = document.querySelectorAll(".plan-option");
 const startButton = document.getElementById("startButton");
 
-console.log("Found plan options:", planOptions.length);
-console.log("Start button found:", !!startButton);
-
 // ===================
 // プラン選択機能
 // ===================
 planOptions.forEach((option) => {
   option.addEventListener("click", function () {
-    console.log("Plan clicked:", this.dataset.plan);
-    
     // 他の選択を解除
     planOptions.forEach((opt) => {
       const checkbox = opt.querySelector(".custom-checkbox");
