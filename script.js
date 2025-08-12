@@ -133,54 +133,62 @@ planOptions.forEach((option) => {
 });
 
 // チェック開始
-startButton.addEventListener("click", function () {
-  if (currentPlan) {
-    startChecklist();
-  }
-});
+if (startButton) {
+  startButton.addEventListener("click", function () {
+    if (currentPlan) {
+      startChecklist();
+    }
+  });
+}
 
 // 戻るボタン
-backButton.addEventListener("click", function () {
-  if (currentSection > 0) {
-    currentSection--;
-    renderCurrentSection();
-  } else {
-    // 最初のセクションの場合、スタート画面に戻る
-    showScreen("start");
-    resetChecklist();
-  }
-});
+if (backButton) {
+  backButton.addEventListener("click", function () {
+    if (currentSection > 0) {
+      currentSection--;
+      renderCurrentSection();
+    } else {
+      // 最初のセクションの場合、スタート画面に戻る
+      showScreen("start");
+      resetChecklist();
+    }
+  });
+}
 
 // 次へボタン
-nextButton.addEventListener("click", function () {
-  if (nextButton.classList.contains("active")) {
-    currentSection++;
-    if (currentSection >= currentItems.length) {
-      showCompletionScreen();
-    } else {
-      renderCurrentSection();
+if (nextButton) {
+  nextButton.addEventListener("click", function () {
+    if (nextButton.classList.contains("active")) {
+      currentSection++;
+      if (currentSection >= currentItems.length) {
+        showCompletionScreen();
+      } else {
+        renderCurrentSection();
+      }
     }
-  }
-});
+  });
+}
 
 // PDF ダウンロード
-downloadPdf.addEventListener("click", function () {
-  // 実際の実装では、選択されたプランに応じてPDFファイルをダウンロード
-  const pdfFile =
-    currentPlan === "free" ? "free-plan-report.pdf" : "paid-plan-report.pdf";
-  alert(
-    `${pdfFile} をダウンロードします。\n（実装時は実際のPDFファイルへのリンクになります）`
-  );
-});
+if (downloadPdf) {
+  downloadPdf.addEventListener("click", function () {
+    // 実際の実装では、選択されたプランに応じてPDFファイルをダウンロード
+    const pdfFile =
+      currentPlan === "free" ? "free-plan-report.pdf" : "paid-plan-report.pdf";
+    alert(
+      `${pdfFile} をダウンロードします。\n（実装時は実際のPDFファイルへのリンクになります）`
+    );
+  });
+}
 
 // ===================
 // 機能関数
 // ===================
 
 function showScreen(screen) {
-  startScreen.style.display = screen === "start" ? "block" : "none";
-  checklistScreen.style.display = screen === "checklist" ? "block" : "none";
-  completionScreen.style.display = screen === "completion" ? "block" : "none";
+  if (startScreen) startScreen.style.display = screen === "start" ? "block" : "none";
+  if (checklistScreen) checklistScreen.style.display = screen === "checklist" ? "block" : "none";
+  if (completionScreen) completionScreen.style.display = screen === "completion" ? "block" : "none";
 }
 
 function startChecklist() {
@@ -201,13 +209,19 @@ function renderCurrentSection() {
     0
   );
   const completedItems = checkedItems.size;
-  progressInfo.textContent = `残り ${totalItems - completedItems} チェック`;
+  if (progressInfo) {
+    progressInfo.textContent = `残り ${totalItems - completedItems} チェック`;
+  }
 
   // セクションタイトル更新
-  sectionTitle.textContent = section.title;
+  if (sectionTitle) {
+    sectionTitle.textContent = section.title;
+  }
 
   // チェックリストアイテム生成
-  checklistItems.innerHTML = "";
+  if (checklistItems) {
+    checklistItems.innerHTML = "";
+  }
   section.items.forEach((item, index) => {
     const itemId = `${currentSection}-${index}`;
     const isChecked = checkedItems.has(itemId);
@@ -247,7 +261,9 @@ function renderCurrentSection() {
       updateNextButton();
     });
 
-    checklistItems.appendChild(itemDiv);
+    if (checklistItems) {
+      checklistItems.appendChild(itemDiv);
+    }
   });
 
   updateNextButton();
@@ -259,10 +275,12 @@ function updateNextButton() {
     return checkedItems.has(`${currentSection}-${index}`);
   }).length;
 
-  if (currentSectionChecked === currentSectionItems.length) {
-    nextButton.classList.add("active");
-  } else {
-    nextButton.classList.remove("active");
+  if (nextButton) {
+    if (currentSectionChecked === currentSectionItems.length) {
+      nextButton.classList.add("active");
+    } else {
+      nextButton.classList.remove("active");
+    }
   }
 }
 
@@ -274,11 +292,17 @@ function resetChecklist() {
   currentPlan = null;
   currentSection = 0;
   checkedItems.clear();
-  startButton.classList.remove("active");
-  startButton.disabled = true;
+  
+  if (startButton) {
+    startButton.classList.remove("active");
+    startButton.disabled = true;
+  }
 
   // プラン選択をリセット
   planOptions.forEach((opt) => {
-    opt.querySelector(".custom-checkbox").classList.remove("checked");
+    const checkbox = opt.querySelector(".custom-checkbox");
+    if (checkbox) {
+      checkbox.classList.remove("checked");
+    }
   });
 }
