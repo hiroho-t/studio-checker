@@ -116,32 +116,42 @@ const downloadPdf = document.getElementById("downloadPdf");
 // ===================
 
 // プラン選択
-planOptions.forEach((option) => {
-  option.addEventListener("click", function () {
-    console.log("Plan option clicked:", this.dataset.plan); // デバッグ用
+if (planOptions.length > 0) {
+  planOptions.forEach((option, index) => {
+    console.log(`Setting up listener for option ${index}:`, option); // デバッグ用
     
-    // 他の選択を解除
-    planOptions.forEach((opt) => {
-      const checkbox = opt.querySelector(".custom-checkbox");
-      if (checkbox) {
-        checkbox.classList.remove("checked");
-      }
-    });
+    if (option) {
+      option.addEventListener("click", function () {
+        console.log("Plan option clicked:", this.dataset.plan); // デバッグ用
+        
+        // 他の選択を解除
+        planOptions.forEach((opt) => {
+          if (opt) {
+            const checkbox = opt.querySelector(".custom-checkbox");
+            if (checkbox) {
+              checkbox.classList.remove("checked");
+            }
+          }
+        });
 
-    // 選択されたプランをマーク
-    const selectedCheckbox = this.querySelector(".custom-checkbox");
-    if (selectedCheckbox) {
-      selectedCheckbox.classList.add("checked");
-    }
-    currentPlan = this.dataset.plan;
+        // 選択されたプランをマーク
+        const selectedCheckbox = this.querySelector(".custom-checkbox");
+        if (selectedCheckbox) {
+          selectedCheckbox.classList.add("checked");
+        }
+        currentPlan = this.dataset.plan;
 
-    // スタートボタンを有効化
-    if (startButton) {
-      startButton.classList.add("active");
-      startButton.disabled = false;
+        // スタートボタンを有効化
+        if (startButton) {
+          startButton.classList.add("active");
+          startButton.disabled = false;
+        }
+      });
     }
   });
-});
+} else {
+  console.error("No plan options found");
+}
 
 // チェック開始
 if (startButton) {
