@@ -128,6 +128,7 @@ planOptions.forEach((option) => {
 
     // スタートボタンを有効化
     startButton.classList.add("active");
+    startButton.disabled = false;
   });
 });
 
@@ -274,6 +275,7 @@ function resetChecklist() {
   currentSection = 0;
   checkedItems.clear();
   startButton.classList.remove("active");
+  startButton.disabled = true;
 
   // プラン選択をリセット
   planOptions.forEach((opt) => {
