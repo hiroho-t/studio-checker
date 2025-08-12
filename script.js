@@ -96,41 +96,32 @@ let currentItems = [];
 let checkedItems = new Set();
 
 // ===================
-// DOM要素の取得
+// DOM要素の取得（基本的なもののみ）
 // ===================
-const startScreen = document.getElementById("startScreen");
-const checklistScreen = document.getElementById("checklistScreen");
-const completionScreen = document.getElementById("completionScreen");
+console.log("Getting DOM elements...");
+
 const planOptions = document.querySelectorAll(".plan-option");
-console.log("Found plan options:", planOptions.length); // デバッグ用
+console.log("Found plan options:", planOptions.length);
+
 const startButton = document.getElementById("startButton");
-const progressInfo = document.getElementById("progressInfo");
-const sectionTitle = document.getElementById("sectionTitle");
-const checklistItems = document.getElementById("checklistItems");
-const backButton = document.getElementById("backButton");
-const nextButton = document.getElementById("nextButton");
-const downloadPdf = document.getElementById("downloadPdf");
+console.log("Start button:", startButton);
 
 // ===================
-// イベントリスナー
+// プラン選択機能
 // ===================
-
-// プラン選択
 if (planOptions.length > 0) {
   planOptions.forEach((option, index) => {
-    console.log(`Setting up listener for option ${index}:`, option); // デバッグ用
+    console.log(`Setting up option ${index}:`, option);
     
     if (option) {
       option.addEventListener("click", function () {
-        console.log("Plan option clicked:", this.dataset.plan); // デバッグ用
+        console.log("Plan clicked:", this.dataset.plan);
         
         // 他の選択を解除
         planOptions.forEach((opt) => {
-          if (opt) {
-            const checkbox = opt.querySelector(".custom-checkbox");
-            if (checkbox) {
-              checkbox.classList.remove("checked");
-            }
+          const checkbox = opt.querySelector(".custom-checkbox");
+          if (checkbox) {
+            checkbox.classList.remove("checked");
           }
         });
 
@@ -138,13 +129,17 @@ if (planOptions.length > 0) {
         const selectedCheckbox = this.querySelector(".custom-checkbox");
         if (selectedCheckbox) {
           selectedCheckbox.classList.add("checked");
+          console.log("Added checked class to:", selectedCheckbox);
         }
+        
         currentPlan = this.dataset.plan;
+        console.log("Selected plan:", currentPlan);
 
         // スタートボタンを有効化
         if (startButton) {
           startButton.classList.add("active");
           startButton.disabled = false;
+          console.log("Start button enabled");
         }
       });
     }
@@ -153,177 +148,16 @@ if (planOptions.length > 0) {
   console.error("No plan options found");
 }
 
-// チェック開始
+// ===================
+// スタートボタン機能
+// ===================
 if (startButton) {
   startButton.addEventListener("click", function () {
     if (currentPlan) {
-      startChecklist();
+      console.log("Starting checklist for plan:", currentPlan);
+      alert(`チェックリストを開始します（プラン: ${currentPlan}）`);
     }
   });
-}
-
-// 戻るボタン
-if (backButton) {
-  backButton.addEventListener("click", function () {
-    if (currentSection > 0) {
-      currentSection--;
-      renderCurrentSection();
-    } else {
-      // 最初のセクションの場合、スタート画面に戻る
-      showScreen("start");
-      resetChecklist();
-    }
-  });
-}
-
-// 次へボタン
-if (nextButton) {
-  nextButton.addEventListener("click", function () {
-    if (nextButton.classList.contains("active")) {
-      currentSection++;
-      if (currentSection >= currentItems.length) {
-        showCompletionScreen();
-      } else {
-        renderCurrentSection();
-      }
-    }
-  });
-}
-
-// PDF ダウンロード
-if (downloadPdf) {
-  downloadPdf.addEventListener("click", function () {
-    // 実際の実装では、選択されたプランに応じてPDFファイルをダウンロード
-    const pdfFile =
-      currentPlan === "free" ? "free-plan-report.pdf" : "paid-plan-report.pdf";
-    alert(
-      `${pdfFile} をダウンロードします。\n（実装時は実際のPDFファイルへのリンクになります）`
-    );
-  });
-}
-
-// ===================
-// 機能関数
-// ===================
-
-function showScreen(screen) {
-  if (startScreen) startScreen.style.display = screen === "start" ? "block" : "none";
-  if (checklistScreen) checklistScreen.style.display = screen === "checklist" ? "block" : "none";
-  if (completionScreen) completionScreen.style.display = screen === "completion" ? "block" : "none";
-}
-
-function startChecklist() {
-  currentItems = checklistData[currentPlan] || checklistData.free;
-  currentSection = 0;
-  checkedItems.clear();
-
-  showScreen("checklist");
-  renderCurrentSection();
-}
-
-function renderCurrentSection() {
-  const section = currentItems[currentSection];
-
-  // プログレス更新
-  const totalItems = currentItems.reduce(
-    (total, section) => total + section.items.length,
-    0
-  );
-  const completedItems = checkedItems.size;
-  if (progressInfo) {
-    progressInfo.textContent = `残り ${totalItems - completedItems} チェック`;
-  }
-
-  // セクションタイトル更新
-  if (sectionTitle) {
-    sectionTitle.textContent = section.title;
-  }
-
-  // チェックリストアイテム生成
-  if (checklistItems) {
-    checklistItems.innerHTML = "";
-  }
-  section.items.forEach((item, index) => {
-    const itemId = `${currentSection}-${index}`;
-    const isChecked = checkedItems.has(itemId);
-
-    const itemDiv = document.createElement("div");
-    itemDiv.className = "checklist-item";
-    itemDiv.innerHTML = `
-                    <div class="custom-checkbox ${
-                      isChecked ? "checked" : ""
-                    }" data-item-id="${itemId}"></div>
-                    <div class="item-text">
-                        ${item.text}
-                        ${item.tools
-                          .map(
-                            (tool) => `
-                            <div class="tool-link">
-                                <span class="info-icon">💡</span>
-                                <span>${tool.text}</span>
-                            </div>
-                        `
-                          )
-                          .join("")}
-                    </div>
-                `;
-
-    // チェックボックスイベント
-    const checkbox = itemDiv.querySelector(".custom-checkbox");
-    checkbox.addEventListener("click", function () {
-      const itemId = this.dataset.itemId;
-      if (checkedItems.has(itemId)) {
-        checkedItems.delete(itemId);
-        this.classList.remove("checked");
-      } else {
-        checkedItems.add(itemId);
-        this.classList.add("checked");
-      }
-      updateNextButton();
-    });
-
-    if (checklistItems) {
-      checklistItems.appendChild(itemDiv);
-    }
-  });
-
-  updateNextButton();
-}
-
-function updateNextButton() {
-  const currentSectionItems = currentItems[currentSection].items;
-  const currentSectionChecked = currentSectionItems.filter((item, index) => {
-    return checkedItems.has(`${currentSection}-${index}`);
-  }).length;
-
-  if (nextButton) {
-    if (currentSectionChecked === currentSectionItems.length) {
-      nextButton.classList.add("active");
-    } else {
-      nextButton.classList.remove("active");
-    }
-  }
-}
-
-function showCompletionScreen() {
-  showScreen("completion");
-}
-
-function resetChecklist() {
-  currentPlan = null;
-  currentSection = 0;
-  checkedItems.clear();
-  
-  if (startButton) {
-    startButton.classList.remove("active");
-    startButton.disabled = true;
-  }
-
-  // プラン選択をリセット
-  planOptions.forEach((opt) => {
-    const checkbox = opt.querySelector(".custom-checkbox");
-    if (checkbox) {
-      checkbox.classList.remove("checked");
-    }
-  });
+} else {
+  console.error("Start button not found");
 }
