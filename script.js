@@ -8,6 +8,10 @@ let currentPlan = null;
 // ===================
 const planOptions = document.querySelectorAll(".plan-option");
 const startButton = document.getElementById("startButton");
+const howToUseLink = document.getElementById("howToUseLink");
+const drawerOverlay = document.getElementById("drawerOverlay");
+const drawer = document.getElementById("drawer");
+const drawerClose = document.getElementById("drawerClose");
 
 // ===================
 // プラン選択機能
@@ -48,3 +52,47 @@ if (startButton) {
     }
   });
 }
+
+// ===================
+// ドロワーメニュー機能
+// ===================
+function openDrawer() {
+  if (drawerOverlay && drawer) {
+    drawerOverlay.classList.add('active');
+    drawer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeDrawer() {
+  if (drawerOverlay && drawer) {
+    drawerOverlay.classList.remove('active');
+    drawer.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+// 使い方リンクのクリックイベント
+if (howToUseLink) {
+  howToUseLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    openDrawer();
+  });
+}
+
+// 閉じるボタンのクリックイベント
+if (drawerClose) {
+  drawerClose.addEventListener('click', closeDrawer);
+}
+
+// オーバーレイのクリックイベント
+if (drawerOverlay) {
+  drawerOverlay.addEventListener('click', closeDrawer);
+}
+
+// ESCキーで閉じる
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeDrawer();
+  }
+});

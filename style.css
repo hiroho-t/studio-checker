@@ -155,8 +155,6 @@ body {
   width: 216px;
   margin: 0 32px;
   border: none;
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .button-icon {
@@ -173,7 +171,7 @@ body {
 
 .start-button.active {
   opacity: 1;
-  cursor: pointer;
+  pointer-events: auto;
 }
 
 .start-button:hover.active {
@@ -360,6 +358,159 @@ body {
 }
 
 /* ===================
+           ドロワーメニュー
+        =================== */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.drawer-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -560px;
+  width: 560px;
+  height: 100vh;
+  background: white;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  padding: 64px 32px;
+  z-index: 1001;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.drawer.active {
+  right: 0;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.drawer-title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drawer-title h2 {
+  color: #333;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 40px;
+  margin: 0;
+}
+
+.drawer-subtitle {
+  color: #999;
+  font-size: 12px;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  line-height: 12px;
+  padding-left: 4px;
+}
+
+.drawer-close {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer-close img {
+  width: 24px;
+  height: 24px;
+}
+
+.drawer-description {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+  margin: 0;
+}
+
+.drawer-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step-item {
+  background: #f8f8f8;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.step-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-icon-circle {
+  width: 56px;
+  height: 56px;
+  background: white;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.step-icon-circle img {
+  width: 24px;
+  height: 24px;
+}
+
+.step-number {
+  color: #999;
+  font-size: 12px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  line-height: 12px;
+}
+
+.step-content {
+  flex: 1;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+/* ===================
            レスポンシブ
         =================== */
 @media (max-width: 600px) {
@@ -378,5 +529,33 @@ body {
 
   .nav-buttons {
     flex-direction: column;
+  }
+
+  .drawer {
+    width: 100%;
+    right: -100%;
+    border-radius: 0;
+  }
+
+  .drawer-header {
+    gap: 32px;
+  }
+
+  .drawer-title h2 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  .step-item {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .step01-tool img {
+    margin-top: 4px;
+  }
+
+  .info-icon img {
+    margin-top: 4px;
   }
 }
