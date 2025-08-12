@@ -1,0 +1,380 @@
+/* ===================
+           基本設定
+        =================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===================
+           メインコンテナ
+        =================== */
+.container {
+  margin: 0 auto;
+}
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ===================
+           ヘッダー部分
+        =================== */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 1px solid #eee;
+  padding: 32px;
+}
+
+.header .subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 200%; /* 32px */
+  margin: 0 32px;
+}
+
+/* ===================
+           プラン選択ボックス
+        =================== */
+.plan-selection-box {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 64px;
+  margin: 0 32px;
+}
+
+.plan-question {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 64px;
+}
+
+/* ===================
+           カスタムチェックボックス
+        =================== */
+
+.plan-options {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.plan-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-radius: 3px;
+  margin-right: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.custom-checkbox.checked {
+  background-color: #333;
+  border-color: #333;
+}
+
+.custom-checkbox.checked::after {
+  content: "✓";
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.plan-label {
+  font-size: 16px;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* ===================
+           情報セクション
+        =================== */
+.info-section {
+  display: flex;
+  align-items: center;
+  margin: 0 32px;
+  border-radius: 6px;
+  gap: 8px;
+}
+
+.info-icon {
+  font-size: 16px;
+  height: 20px;
+}
+
+.info-icon img {
+  width: 20px;
+}
+
+.info-text {
+  font-size: 14px;
+  color: #666;
+  flex: 1;
+}
+
+/* ===================
+           スタートボタン
+        =================== */
+.start-button {
+  display: flex;
+  padding: 12px 12px 12px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 50px;
+  background: #333;
+  width: 216px;
+  margin: 0 32px;
+  border: none;
+}
+
+.button-icon {
+  padding: 12px;
+  border-radius: 100px;
+  border: 1px solid #fff;
+}
+
+.button-icon img {
+  filter: brightness(3);
+  width: 16px;
+  height: 12px;
+}
+
+.start-button.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.start-button:hover.active {
+  background: #555;
+  transform: translateY(-2px);
+}
+
+/* ===================
+           チェックリスト画面
+        =================== */
+.checklist-screen {
+  display: none;
+}
+
+.checklist-screen.active {
+  display: block;
+}
+
+.progress-info {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.checklist-section {
+  background: white;
+  border-radius: 8px;
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #1a1a1a;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 15px 0;
+}
+
+.checklist-item .custom-checkbox {
+  margin-top: 2px;
+}
+
+.item-text {
+  font-size: 16px;
+  margin-left: 15px;
+  flex: 1;
+}
+
+.tool-link {
+  display: flex;
+  align-items: flex-start;
+  background: #f8f9fa;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===================
+           ナビゲーションボタン
+        =================== */
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.nav-button {
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+.back-button {
+  background: white;
+  color: #333;
+  border: 2px solid #ddd;
+}
+
+.back-button:hover {
+  border-color: #999;
+}
+
+.next-button {
+  background: #333;
+  color: white;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.next-button.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.next-button:hover.active {
+  background: #555;
+}
+
+/* ===================
+           完了画面
+        =================== */
+.completion-screen {
+  display: none;
+  text-align: center;
+}
+
+.completion-screen.active {
+  display: block;
+}
+
+.completion-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.completion-text {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.pdf-download {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 10px;
+  transition: all 0.3s;
+}
+
+.pdf-download:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* ===================
+           フッター
+        =================== */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #999;
+  margin-top: 64px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #999;
+  text-decoration: none;
+}
+
+.copyright {
+  color: #999;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* ===================
+           レスポンシブ
+        =================== */
+@media (max-width: 600px) {
+  .info-section {
+    align-items: flex-start;
+  }
+  .plan-selection-box,
+  .checklist-section {
+    padding: 25px;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Studio公開チェッカー</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="startScreen" class="start-screen">
+        <div class="header">
+          <h1>Studio公開チェッカー</h1>
+          <p class="subtitle">
+            Studioで作成したサイトを公開する前に、チェックを行いましょう。
+          </p>
+        </div>
+
+        <div class="plan-selection-box">
+          <h2 class="plan-question">
+            プロジェクトの料金プランは、どちらですか？
+          </h2>
+
+          <div class="plan-options">
+            <div class="plan-option" data-plan="free">
+              <div class="custom-checkbox"></div>
+              <span class="plan-label">無料のFreeプラン（全8問）</span>
+            </div>
+
+            <div class="plan-option" data-plan="paid">
+              <div class="custom-checkbox"></div>
+              <span class="plan-label">有料プランのいずれか（全11問）</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <span class="info-icon"
+            ><img
+              src="img/lightbulb_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+              alt=""
+          /></span>
+          <div class="info-text">
+            料金プランを確認するには、Studioにログインし、対象のプロジェクトを選択後、「プラン&お支払い」タブを開きます。
+          </div>
+        </div>
+
+        <button class="start-button" id="startButton">
+          チェックを始める
+          <span class="button-icon">
+            <img
+              src="img/arrow_forward_ios_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+              alt=""
+          /></span>
+        </button>
+      </div>
+
+      <!-- チェックリスト画面 -->
+      <div id="checklistScreen" class="checklist-screen">
+        <div class="header">
+          <h1>Studio公開チェッカー</h1>
+          <div class="progress-info" id="progressInfo">残り 11 チェック</div>
+        </div>
+
+        <div class="checklist-section">
+          <h2 class="section-title" id="sectionTitle">
+            文章のチェックをしましょう。
+          </h2>
+
+          <div id="checklistItems">
+            <!-- チェックリストアイテムはJavaScriptで動的に生成 -->
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-links">
+          <a href="#">使い方</a>
+          <a href="#">運営会社</a>
+        </div>
+        <p class="copyright">© StartWith Inc.</p>
+      </div>
+    </div>
+  </body>
+</html>
