@@ -550,4 +550,12 @@ body {
     padding: 24px;
     gap: 24px;
   }
+
+  .step01-tool img {
+    margin-top: 4px;
+  }
+
+  .info-icon img {
+    margin-top: 4px;
+  }
 }
