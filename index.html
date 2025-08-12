@@ -53,7 +53,7 @@
           </div>
         </div>
 
-        <button class="start-button" id="startButton" disabled>
+        <button class="start-button" id="startButton">
           チェックを始める
           <span class="button-icon">
             <img
@@ -78,29 +78,82 @@
           <div id="checklistItems">
             <!-- チェックリストアイテムはJavaScriptで動的に生成 -->
           </div>
-
-          <div class="nav-buttons">
-            <button class="nav-button back-button" id="backButton">戻る</button>
-            <button class="nav-button next-button" id="nextButton">次へ</button>
-          </div>
         </div>
-      </div>
-
-      <!-- 完了画面 -->
-      <div id="completionScreen" class="completion-screen">
-        <div class="completion-title">チェック完了！</div>
-        <div class="completion-text">すべてのチェックが完了しました。レポートをダウンロードできます。</div>
-        <button class="pdf-download" id="downloadPdf">レポートをダウンロード</button>
       </div>
 
       <div class="footer">
         <div class="footer-links">
-          <a href="#">使い方</a>
-          <a href="#">運営会社</a>
+          <a href="#" id="howToUseLink">使い方</a>
+          <a href="https://startwith.studio.site/" target="_blank" rel="noopener noreferrer">運営会社</a>
         </div>
         <p class="copyright">© StartWith Inc.</p>
       </div>
     </div>
+
+    <!-- ドロワーオーバーレイ -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- ドロワーメニュー -->
+    <div class="drawer" id="drawer">
+      <!-- ヘッダー -->
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <h2>使い方</h2>
+          <div class="drawer-subtitle">How to use</div>
+        </div>
+        <button class="drawer-close" id="drawerClose" aria-label="閉じる">
+          <img src="img/close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="閉じる">
+        </button>
+      </div>
+
+      <!-- 説明文 -->
+      <p class="drawer-description">
+        Studio公開チェッカーの使い方は、以下の通りです。
+      </p>
+
+      <!-- ステップリスト -->
+      <div class="drawer-steps">
+        <!-- Step 01 -->
+        <div class="step-item">
+          <div class="step-icon">
+            <div class="step-icon-circle">
+              <img src="img/currency_yen_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="料金プラン">
+            </div>
+            <div class="step-number">Step 01</div>
+          </div>
+          <div class="step-content">
+            料金プランによって、チェック項目が変わります。チェックしたいプロジェクトの料金プランが、【無料】か【有料】かを選びます。
+          </div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="step-item">
+          <div class="step-icon">
+            <div class="step-icon-circle">
+              <img src="img/edit_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="編集">
+            </div>
+            <div class="step-number">Step 02</div>
+          </div>
+          <div class="step-content">
+            各チェック項目について、必要に応じて修正を行いましょう。
+          </div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="step-item">
+          <div class="step-icon">
+            <div class="step-icon-circle">
+              <img src="img/article_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="レポート">
+            </div>
+            <div class="step-number">Step 03</div>
+          </div>
+          <div class="step-content">
+            全チェック完了後、「公開前チェック完了報告書」をダウンロードできます。クライアントへ送信しましょう。
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
