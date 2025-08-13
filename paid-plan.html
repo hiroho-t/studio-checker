@@ -11,14 +11,35 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="img/StartWith_favicon.png" />
+    <meta name="description" content="Studioで作ったWebサイトの公開前チェックを、無料でヌケモレなく。料金プラン別のチェックリストと報告書作成機能で、初心者でも安心してサイト公開が完了できます。" />
     <title>Studioサイト 公開前チェック完了ページ | Studio公開チェッカー</title>
   </head>
   <body>
-    <div class="report-container">
+    <div class="step-container">
       <!-- ヘッダー -->
-      <div class="report-header">
-        <h1 class="report-title">Studio公開前チェック完了</h1>
+      <div class="step-header">
+        <div class="step-header-top">
+          <h1 class="step-title">
+            <a href="index.html">Studio公開チェッカー</a>
+          </h1>
+          <a
+            href="https://www.udemy.com/courses/search/?src=ukw&q=%E7%AF%89%E5%9C%B0"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="udemy-link"
+          >
+            UdemyでStudioを学ぼう
+          </a>
+        </div>
       </div>
+
+      <!-- メインコンテンツ -->
+      <div class="step-main">
+        <div class="report-container">
+          <!-- 完了ヘッダー -->
+          <div class="report-header">
+            <h1 class="report-title">Studio公開前チェック完了</h1>
+          </div>
 
       <!-- チェック項目リスト -->
       <div class="report-content">
@@ -326,7 +347,145 @@
             </p>
           </div>
         </div>
+        </div>
+      </div>
+
+      <!-- フッター -->
+      <div class="footer">
+        <div class="footer-links">
+          <a href="#" id="howToUseLink">使い方</a>
+          <a
+            href="https://startwith.studio.site/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >運営会社</a
+          >
+        </div>
+        <p class="copyright">© StartWith Inc.</p>
       </div>
     </div>
+
+    <!-- ドロワーオーバーレイ -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- ドロワーメニュー -->
+    <div class="drawer" id="drawer">
+      <!-- ヘッダー -->
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <h2>使い方</h2>
+          <div class="drawer-subtitle">How to use</div>
+        </div>
+        <button class="drawer-close" id="drawerClose" aria-label="閉じる">
+          <img
+            src="img/close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+            alt="閉じる"
+          />
+        </button>
+      </div>
+
+      <!-- 説明文 -->
+      <p class="drawer-description">
+        Studio公開チェッカーの使い方は、以下の通りです。
+      </p>
+
+      <!-- ステップリスト -->
+      <div class="drawer-steps">
+        <!-- Step 01 -->
+        <div class="step-item">
+          <div class="step-icon">
+            <div class="step-icon-circle">
+              <img
+                src="img/currency_yen_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="料金プラン"
+              />
+            </div>
+            <div class="step-number">Step 01</div>
+          </div>
+          <div class="step-content">
+            料金プランによって、チェック項目が変わります。チェックしたいプロジェクトの料金プランが、【無料】か【有料】かを選びます。
+          </div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="step-item">
+          <div class="step-icon">
+            <div class="step-icon-circle">
+              <img
+                src="img/edit_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="編集"
+              />
+            </div>
+            <div class="step-number">Step 02</div>
+          </div>
+          <div class="step-content">
+            各チェック項目について、必要に応じて修正を行いましょう。
+          </div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="step-item">
+          <div class="step-icon">
+            <div class="step-icon-circle">
+              <img
+                src="img/article_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="レポート"
+              />
+            </div>
+            <div class="step-number">Step 03</div>
+          </div>
+          <div class="step-content">
+            全チェック完了後、「公開前チェック完了ページ」が表示できます。クライアントへURLを共有して作業を報告しましょう。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ドロワーメニュー機能
+      const howToUseLink = document.getElementById("howToUseLink");
+      const drawerOverlay = document.getElementById("drawerOverlay");
+      const drawer = document.getElementById("drawer");
+      const drawerClose = document.getElementById("drawerClose");
+
+      function openDrawer() {
+        if (drawerOverlay && drawer) {
+          drawerOverlay.classList.add("active");
+          drawer.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+      }
+
+      function closeDrawer() {
+        if (drawerOverlay && drawer) {
+          drawerOverlay.classList.remove("active");
+          drawer.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      }
+
+      // ドロワーメニューのイベントリスナー
+      if (howToUseLink) {
+        howToUseLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          openDrawer();
+        });
+      }
+
+      if (drawerClose) {
+        drawerClose.addEventListener("click", closeDrawer);
+      }
+
+      if (drawerOverlay) {
+        drawerOverlay.addEventListener("click", closeDrawer);
+      }
+
+      // ESCキーで閉じる
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeDrawer();
+        }
+      });
+    </script>
   </body>
 </html>
