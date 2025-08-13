@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="img/StartWith_favicon.png" />
+    <title>Step 08 - フォントのチェック | Studio公開チェッカー</title>
+  </head>
+  <body>
+    <div class="step-container">
+      <!-- ヘッダー -->
+      <div class="step-header">
+        <div class="step-header-top">
+          <h1 class="step-title">
+            <a href="index.html">Studio公開チェッカー</a>
+          </h1>
+          <a
+            href="https://www.udemy.com/courses/search/?src=ukw&q=%E7%AF%89%E5%9C%B0"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="udemy-link"
+          >
+            UdemyでStudioを学ぼう
+          </a>
+        </div>
+        <div class="step-progress">
+          <span class="progress-text">残り</span>
+          <span class="progress-number" id="remainingCount">1</span>
+          <span class="progress-text">チェック</span>
+        </div>
+      </div>
+
+      <!-- メインコンテンツ -->
+      <div class="step-main">
+        <div class="step-section">
+          <!-- 質問ボックス -->
+          <div class="question-box">
+            <h2 class="question-title">フォントのチェックをしましょう。</h2>
+
+            <div class="options">
+              <!-- オプション1 -->
+              <div class="option" data-option="page-title">
+                <div class="checkbox" id="checkbox1"></div>
+                <span class="option-text"
+                  >指定したフォントファミリー（サブフォントを含む）が、主なブラウザ（Google
+                  Chrome、Safari、Microsoft
+                  Edge、FireFoxなど）で、きちんと表示されていますか？</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- ツール情報 -->
+          <div class="step-tools">
+            <div class="step-tool">
+              <img
+                src="img/lightbulb_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="ヒント"
+              />
+              <div class="step-tool-text">
+                「サブフォント」の説明と設定方法は<a
+                  href="https://help.studio.design/ja/articles/1949383-%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A-%E7%BD%AE%E6%8F%9B-%E5%89%8A%E9%99%A4%E6%96%B9%E6%B3%95"
+                  class="step-tool-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >こちら</a
+                >。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ナビゲーションボタン -->
+        <div class="step-buttons">
+          <a href="step07.html" class="step-btn step-btn-back">
+            <div class="step-btn-icon">
+              <img
+                src="img/arrow_forward_ios_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="戻る"
+              />
+            </div>
+            前に戻る
+          </a>
+
+          <button class="step-btn step-btn-next" id="nextButton" disabled>
+            完了する
+            <div class="step-btn-icon">
+              <img
+                src="img/arrow_forward_ios_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="完了する"
+              />
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- フッター -->
+      <div class="footer">
+        <div class="footer-links">
+          <a href="#" id="howToUseLink">使い方</a>
+          <a
+            href="https://startwith.studio.site/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >運営会社</a
+          >
+        </div>
+        <p class="copyright">© StartWith Inc.</p>
+      </div>
+    </div>
+
+    <!-- ドロワーオーバーレイ -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- 使い方ドロワーメニュー -->
+    <div class="drawer" id="drawer">
+      <!-- ヘッダー -->
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <h2>使い方</h2>
+          <div class="drawer-subtitle">How to use</div>
+        </div>
+        <button class="drawer-close" id="drawerClose" aria-label="閉じる">
+          <img
+            src="img/close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+            alt="閉じる"
+          />
+        </button>
+      </div>
+
+      <!-- 説明文 -->
+      <p class="drawer-description">
+        Studio公開チェッカーの使い方は、以下の通りです。
+      </p>
+
+      <!-- ステップリスト -->
+      <div class="drawer-steps">
+        <!-- Step 01 -->
+        <div class="step-item">
+          <div class="step-icon">
+            <div class="step-icon-circle">
+              <img
+                src="img/currency_yen_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="料金プラン"
+              />
+            </div>
+            <div class="step-number">Step 01</div>
+          </div>
+          <div class="step-content">
+            料金プランによって、チェック項目が変わります。チェックしたいプロジェクトの料金プランが、【無料】か【有料】かを選びます。
+          </div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="step-item">
+          <div class="step-icon">
+            <div class="step-icon-circle">
+              <img
+                src="img/edit_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="編集"
+              />
+            </div>
+            <div class="step-number">Step 02</div>
+          </div>
+          <div class="step-content">
+            各チェック項目について、必要に応じて修正を行いましょう。
+          </div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="step-item">
+          <div class="step-icon">
+            <div class="step-icon-circle">
+              <img
+                src="img/article_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="レポート"
+              />
+            </div>
+            <div class="step-number">Step 03</div>
+          </div>
+          <div class="step-content">
+            全チェック完了後、「公開前チェック完了ページ」が表示できます。クライアントへURLを共有して作業を報告しましょう。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ダウンロードドロワーメニュー -->
+    <div class="drawer" id="downloadDrawer">
+      <!-- ヘッダー -->
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <h2>チェック完了</h2>
+          <div class="drawer-subtitle">Complete</div>
+        </div>
+        <button
+          class="drawer-close"
+          id="downloadDrawerClose"
+          aria-label="閉じる"
+        >
+          <img
+            src="img/close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+            alt="閉じる"
+          />
+        </button>
+      </div>
+
+      <!-- 説明文 -->
+      <p class="drawer-description">
+        すべてのチェックが完了しました。<br />
+        お疲れさまでした。<br /><br />
+        「公開前チェック完了ページ」のURLをクライアントへ共有して、公開準備が整ったことをお知らせしましょう。
+      </p>
+
+      <!-- ダウンロードボタン -->
+      <div class="download-button-container">
+        <a
+          href="free-plan.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="download-button"
+          id="downloadButton"
+        >
+          <span class="download-button-text">公開前チェック完了ページ</span>
+          <img
+            src="img/open_in_new_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+            alt="ダウンロード"
+            class="download-icon"
+          />
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // DOM要素の取得
+      const checkboxes = document.querySelectorAll(".checkbox");
+      const nextButton = document.getElementById("nextButton");
+      const remainingCount = document.getElementById("remainingCount");
+      const howToUseLink = document.getElementById("howToUseLink");
+      const drawerOverlay = document.getElementById("drawerOverlay");
+      const drawer = document.getElementById("drawer");
+      const drawerClose = document.getElementById("drawerClose");
+      const downloadDrawer = document.getElementById("downloadDrawer");
+      const downloadDrawerClose = document.getElementById(
+        "downloadDrawerClose"
+      );
+
+      let checkedItems = new Set();
+      let totalItems = checkboxes.length;
+
+      // 選択されたプランを取得
+      const selectedPlan = localStorage.getItem("selectedPlan");
+      const totalChecks = selectedPlan === "free" ? 1 : 4;
+
+      // 初期表示の更新
+      remainingCount.textContent = totalChecks;
+
+      // 保存されたチェック状態を復元
+      function loadCheckState() {
+        const savedChecks = localStorage.getItem("step05_checks");
+        if (savedChecks) {
+          const checksArray = JSON.parse(savedChecks);
+          checksArray.forEach((option) => {
+            checkedItems.add(option);
+            const checkbox = document.querySelector(
+              `[data-option="${option}"] .checkbox`
+            );
+            if (checkbox) {
+              checkbox.classList.add("checked");
+            }
+          });
+          updateNextButton();
+        }
+      }
+
+      // チェック状態を保存
+      function saveCheckState() {
+        const checksArray = Array.from(checkedItems);
+        localStorage.setItem("step08_checks", JSON.stringify(checksArray));
+      }
+
+      // チェックボックスのクリックイベント
+      checkboxes.forEach((checkbox, index) => {
+        checkbox.parentElement.addEventListener("click", function () {
+          const option = this.getAttribute("data-option");
+
+          if (checkedItems.has(option)) {
+            checkedItems.delete(option);
+            checkbox.classList.remove("checked");
+          } else {
+            checkedItems.add(option);
+            checkbox.classList.add("checked");
+          }
+
+          saveCheckState();
+          updateNextButton();
+        });
+      });
+
+      // 初期化時に状態を復元
+      loadCheckState();
+
+      // 次へボタンの状態更新
+      function updateNextButton() {
+        if (checkedItems.size === totalItems) {
+          nextButton.disabled = false;
+          nextButton.style.background = "#333";
+          nextButton.style.cursor = "pointer";
+        } else {
+          nextButton.disabled = true;
+          nextButton.style.background = "#ccc";
+          nextButton.style.cursor = "not-allowed";
+        }
+      }
+
+      // ダウンロードドロワーメニュー機能
+      function openDownloadDrawer() {
+        if (drawerOverlay && downloadDrawer) {
+          drawerOverlay.classList.add("active");
+          downloadDrawer.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+      }
+
+      function closeDownloadDrawer() {
+        if (drawerOverlay && downloadDrawer) {
+          drawerOverlay.classList.remove("active");
+          downloadDrawer.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      }
+
+      // 完了ボタンのクリックイベント（ダウンロードドロワーを開く）
+      if (nextButton) {
+        nextButton.addEventListener("click", function () {
+          if (!nextButton.disabled) {
+            openDownloadDrawer();
+          }
+        });
+      }
+
+      // ドロワーメニュー機能
+      function openDrawer() {
+        if (drawerOverlay && drawer) {
+          drawerOverlay.classList.add("active");
+          drawer.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+      }
+
+      function closeDrawer() {
+        if (drawerOverlay && drawer) {
+          drawerOverlay.classList.remove("active");
+          drawer.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      }
+
+      // ドロワーメニューのイベントリスナー
+      if (howToUseLink) {
+        howToUseLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          openDrawer();
+        });
+      }
+
+      if (drawerClose) {
+        drawerClose.addEventListener("click", closeDrawer);
+      }
+
+      if (downloadDrawerClose) {
+        downloadDrawerClose.addEventListener("click", closeDownloadDrawer);
+      }
+
+      if (drawerOverlay) {
+        drawerOverlay.addEventListener("click", function () {
+          closeDrawer();
+          closeDownloadDrawer();
+        });
+      }
+
+      // ESCキーで閉じる
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeDrawer();
+          closeDownloadDrawer();
+        }
+      });
+    </script>
+  </body>
+</html>
