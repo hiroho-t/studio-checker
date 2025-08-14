@@ -43,11 +43,29 @@ planOptions.forEach((option) => {
 });
 
 // ===================
+// チェック状態リセット機能
+// ===================
+function resetAllCheckStates() {
+  // step01からstep11まで、およびstep08_freeのチェック状態をリセット
+  const stepKeys = [
+    'step01_checks', 'step02_checks', 'step03_checks', 'step04_checks',
+    'step05_checks', 'step06_checks', 'step07_checks', 'step08_checks',
+    'step08_free_checks', 'step09_checks', 'step10_checks', 'step11_checks'
+  ];
+  
+  stepKeys.forEach(key => {
+    localStorage.removeItem(key);
+  });
+}
+
+// ===================
 // スタートボタン機能
 // ===================
 if (startButton) {
   startButton.addEventListener("click", function () {
     if (currentPlan) {
+      // 全ステップのチェック状態をリセット
+      resetAllCheckStates();
       // 選択されたプランを保存
       localStorage.setItem('selectedPlan', currentPlan);
       // step01.htmlに遷移

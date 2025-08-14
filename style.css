@@ -529,9 +529,8 @@ body {
 .progress-text {
   color: #333;
   font-size: 16px;
-  font-weight: 400;
-  line-height: 16px;
-  padding-bottom: 3px;
+  font-weight: 600;
+  line-height: 200%;
 }
 
 .progress-number {
@@ -900,6 +899,9 @@ body {
            レスポンシブ
         =================== */
 @media (max-width: 600px) {
+  .start-button {
+    width: 100%;
+  }
   .flex-row {
     display: block;
   }
@@ -996,10 +998,15 @@ body {
   }
 
   .step-buttons {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .step-tool img {
     margin-top: 4px;
+  }
+  .step-btn-back,
+  .step-btn-next {
+    width: 100%;
+    justify-content: center;
   }
 }
